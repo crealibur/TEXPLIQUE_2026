@@ -84,7 +84,7 @@ else if (direction === "clearToWooden") {
 <p>{text.length} / {maxChars} caractères</p>
       <label>Direction de traduction</label>
       <select value={direction} onChange={(e) => setDirection(e.target.value)}>
-        <option value="woodenToClear">Langue de bois ou jargon → Langage clair</option>
+        <option value="woodenToClear">Langue de bois ou compliquée → Langage clair</option>
         <option value="clearToWooden">Langage clair → Langue de bois</option>
         
       </select>
