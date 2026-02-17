@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+body {
+  font-family: 'Roboto', 'Segoe UI', sans-serif;
+  background-color: #f4b471;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 30px;
+  background: #fef0dc;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;   /* texte à gauche, perroquet à droite */
+  align-items: flex-end;            /* bas aligné avec le cadre */
+  max-width: 760px;                 /* même largeur que la carte */
+  margin: 0 auto;                   /* centré comme la carte */
+  padding: 0 30px;                  /* même padding que la carte */
+}
+
+.titleBlock {
+  display: flex;
+  flex-direction: column; /* empile le titre et le sous-titre */
+  align-items: flex-start; /* aligne à gauche */
+}
+
+.titleBlock h1 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 2.2em;
+  font-weight: 700; /* Roboto Bold */
+  margin: 0;
+  display: flex;
+  align-items: center; /* pour aligner le point de réflexion avec TEXPLIQUE */
+  color: #2f2f2f;
+}
+
+.titleBlock .pdr {
+  height: 1em; /* taille ajustée au texte */
+  margin-left: 6px;
+}
+
+.subtitle {
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.95em;
+  font-weight: 400; /* Roboto Regular */
+  margin-top: 4px;
+  color: gray;
+}
+
+.perroquet {
+  height: 120px; /* ajuste à la taille de la maquette */
+}
+
+label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 6px;
+}
+
+textarea, select {
+  width: 100%;
+  padding: 10px;
+  font-size: 1em;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+button {
+  width: 100%;
+  background-color: #3f83f8;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 12px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background-color: #316bd8;
+}
+
+.result {
+  margin-top: 20px;
+  background: #f9f9f9;
+  padding: 15px;
+  border-radius: 6px;
+  min-height: 80px;
+  white-space: pre-line;
+}
+/* Bouton traduire */
+button.translate {
+  background-color: #028174; /* bleu-vert de la maquette */
+  color: white;
+}
+button.translate:hover {
+  background-color: #02695f;
+}
+
+/* Bouton effacer */
+button.clear {
+  background-color: #f44336; /* rouge vif */
+  color: white;
+}
+button.clear:hover {
+  background-color: #d7352a;
+}
