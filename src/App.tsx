@@ -36,21 +36,22 @@ else if (direction === "clearToWooden") {
 }
 
 
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${import.meta.env.VITE_OPENAI_API_KEY}`,
-      },
-      body: JSON.stringify({
-        model: 'gpt-4o',
-        messages: [
-          { role: 'system', content: prompt },
-          { role: 'user', content: text },
-        ],
-        temperature: 0.7,
-      }),
-    })
+  // REMPLACE l'URL OpenAI par l'URL de ta fonction Netlify
+const response = await fetch('/.netlify/functions/translate', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    // SUPPRIME la ligne Authorization ici, elle n'est plus nécessaire dans App.tsx
+  },
+  body: JSON.stringify({
+    model: 'gpt-4o',
+    messages: [
+      { role: 'system', content: prompt },
+      { role: 'user', content: text },
+    ],
+    temperature: 0.7,
+  }),
+});
 
     const data = await response.json()
     setResult(data.choices[0]?.message?.content ?? 'Erreur')
