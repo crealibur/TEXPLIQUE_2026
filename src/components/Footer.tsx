@@ -6,31 +6,17 @@ const Footer: React.FC = () => {
       <div className="container mx-auto px-4 text-center text-sm text-gray-600 dark:text-gray-400 space-y-2">
         <p>
           {"Utilise l'API OpenAI pour traduire entre la langue de bois et le langage clair. — "}
-          
-            href="/cgu.html"
-            className="text-blue-600 dark:text-blue-400 underline hover:opacity-80"
-          >
+          <a href="/cgu.html" className="text-blue-600 dark:text-blue-400 underline hover:opacity-80">
             {"CGU & code source"}
           </a>
         </p>
         <p>
           {"Une application "}
-          
-            href="https://www.pointsdereflexion.fr"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-semibold hover:opacity-80"
-            style={{ color: '#c0392b' }}
-          >
+          <a href="https://www.pointsdereflexion.fr" target="_blank" rel="noopener noreferrer" className="font-semibold hover:opacity-80" style={{ color: '#c0392b' }}>
             Points de réflexion
           </a>
           {" — "}
-          
-            href="https://fr.tipeee.com/points-de-reflexion"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-600 dark:text-blue-400 underline hover:opacity-80"
-          >
+          <a href="https://fr.tipeee.com/points-de-reflexion" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 underline hover:opacity-80">
             {"Soutenir sur Tipeee"}
           </a>
         </p>
