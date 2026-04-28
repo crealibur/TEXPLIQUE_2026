@@ -23,11 +23,13 @@
     p,li{max-width:70ch}
     code{background:color-mix(in oklab, var(--fg) 8%, transparent);padding:2px 6px;border-radius:8px;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-size:0.95em}
     .card{background:var(--card);border:1px solid color-mix(in oklab, var(--fg) 12%, transparent);padding:14px;border-radius:14px}
+    pre{background:color-mix(in oklab, var(--fg) 90%, transparent);color:var(--bg);border-radius:10px;padding:16px;overflow-x:auto;font-size:0.88rem;line-height:1.6;white-space:pre-wrap;word-break:break-word;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;}
     footer{margin-top:42px;padding-top:16px;border-top:1px dashed color-mix(in oklab, var(--fg) 20%, transparent);color:var(--muted);font-size:0.95rem}
     .muted{color:var(--muted)}
     .pill{display:inline-block;border:1px solid color-mix(in oklab, var(--fg) 20%, transparent);padding:2px 8px;border-radius:999px;font-size:0.86rem;color:var(--muted)}
     a{color:var(--accent)}
-    
+    .tipeee-btn{display:inline-block;background:#e74c3c;color:white;text-decoration:none;padding:8px 16px;border-radius:8px;font-weight:500;margin-top:8px;}
+    .tipeee-btn:hover{opacity:0.85}
     @media print{
       nav, .pill{display:none}
       .wrap{padding:0}
@@ -40,7 +42,7 @@
   <main class="wrap" role="main">
     <header>
       <h1>Conditions générales d'utilisation (CGU)</h1>
-      <div class="subtitle">Application web <strong>TEXPLIQUE</strong> — Version 1.0 • Mise à jour : <time datetime="2025-11-01">1 novembre 2025</time></div>
+      <div class="subtitle">Application web <strong>TEXPLIQUE</strong> — une création <a href="https://www.pointsdereflexion.fr" target="_blank" rel="noopener noreferrer">Points de réflexion</a> — Version 1.0 • Mise à jour : <time datetime="2025-11-01">1 novembre 2025</time></div>
     </header>
 
     <nav aria-label="Sommaire">
@@ -55,7 +57,8 @@
       <a href="#resiliation">8. Résiliation</a>
       <a href="#liens">9. Liens externes</a>
       <a href="#droit">10. Droit applicable et litiges</a>
-      <a href="#contact">11. Contact</a>
+      <a href="#transparence">11. Transparence technique</a>
+      <a href="#contact">12. Contact</a>
     </nav>
 
     <section id="objet">
@@ -107,7 +110,7 @@
         <li>Tu es invité à éviter toute donnée sensible dans les textes soumis (santé, opinions politiques, données financières, identifiants, etc.).</li>
         <li>TEXPLIQUE met en œuvre des mesures raisonnables de sécurité côté client et d'intégration, sans garantir l'absence de vulnérabilités inhérentes à Internet.</li>
       </ul>
-      <p class="muted"><strong>Note OpenAI.</strong> Les politiques de traitement d'OpenAI s'appliquent aux textes transmis via l'API. Réfère‑toi à leur documentation et à leurs engagements de confidentialité. </p>
+      <p class="muted"><strong>Note OpenAI.</strong> Les politiques de traitement d'OpenAI s'appliquent aux textes transmis via l'API. Réfère‑toi à leur documentation et à leurs engagements de confidentialité.</p>
       <p>OpenAI, le prestataire d'intelligence artificielle utilisé par TEXPLIQUE, ne conserve pas les données envoyées via l'API et ne les utilise pas pour réentraîner ses modèles. Les textes sont temporairement traités le temps de la requête, puis supprimés selon la politique de confidentialité d'OpenAI.</p>
     </section>
 
@@ -140,9 +143,46 @@
       <p>Les présentes sont régies par le droit français. Tout litige relatif à leur validité, leur interprétation ou leur exécution relève de la compétence des juridictions de <strong>Paris</strong>, sous réserve des règles impératives applicables.</p>
     </section>
 
+    <section id="transparence">
+      <h2>11. Transparence technique</h2>
+
+      <h3>Code source</h3>
+      <p>Le code source de TEXPLIQUE est publié sous licence MIT et librement consultable sur GitHub :</p>
+      <p><a href="https://github.com/crealibur/TEXPLIQUE_2026" target="_blank" rel="noopener noreferrer">→ github.com/crealibur/TEXPLIQUE_2026</a></p>
+
+      <h3>Prompts utilisés</h3>
+      <p>Les instructions envoyées au modèle GPT-4o d'OpenAI sont les suivantes :</p>
+
+      <p><strong>Langue de bois → Langage clair</strong></p>
+      <pre>Tu es un traducteur expert en langage clair. Ton rôle est de décoder
+les phrases rédigées en langue de bois politique, administrative ou
+managériale, pour révéler ce qu'elles signifient réellement, sans détours.
+
+Ta reformulation doit :
+- Être directe, concise et compréhensible par tout le monde
+- Mettre en lumière le message caché ou implicite
+- Remplacer les euphémismes par leur sens réel
+- Adopter un ton légèrement incisif mais sans caricature
+
+Voici la phrase à traduire :
+"[texte de l'utilisateur]"</pre>
+
+      <p><strong>Langage clair → Langue de bois</strong></p>
+      <pre>Tu es un expert en communication politique et tu es pressé.
+Transforme ce texte simple en une formulation technocratique,
+administrative et floue, en utilisant des tournures vagues,
+des expressions détournées et des mots abstraits :
+
+"[texte de l'utilisateur]"</pre>
+
+      <h3>Soutenir le projet</h3>
+      <p>TEXPLIQUE est un projet indépendant et gratuit. Si tu trouves l'outil utile, tu peux soutenir <strong>Points de réflexion</strong> sur Tipeee :</p>
+      <a href="https://fr.tipeee.com/points-de-reflexion" target="_blank" rel="noopener noreferrer" class="tipeee-btn">☕ Soutenir sur Tipeee</a>
+    </section>
+
     <section id="contact">
-      <h2>11. Contact</h2>
-      <p>Pour toute question sur ces CGU, tu peux contacter l'éditeur de TEXPLIQUE : <strong><a href="mailto:arnaud@pointsdereflexion.com">arnaud@pointsdereflexion.com</a></strong>.</p>
+      <h2>12. Contact</h2>
+      <p>Pour toute question sur ces CGU, tu peux contacter l'éditeur de TEXPLIQUE : <strong><a href="mailto:contact@pointsdereflexion.com">contact@pointsdereflexion.com</a></strong>.</p>
     </section>
 
     <div style="text-align: center; margin: 32px 0;">
@@ -150,7 +190,7 @@
     </div>
 
     <footer>
-      <p class="muted">© <span id="year"></span> TEXPLIQUE — Tous droits réservés.</p>
+      <p class="muted">© <span id="year"></span> <a href="https://www.pointsdereflexion.fr" target="_blank" rel="noopener noreferrer">Points de réflexion</a> — Tous droits réservés.</p>
       <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
     </footer>
   </main>
