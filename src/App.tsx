@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import Footer from './components/Footer'
 
 function App() {
   const [text, setText] = useState('')
@@ -13,10 +12,10 @@ function App() {
     setLoading(true)
     setResult('')
     
-let prompt = "";
+    let prompt = "";
 
-if (direction === "woodenToClear") {
-  prompt = `Tu es un traducteur expert en langage clair. Ton rôle est de décoder les phrases rédigées en langue de bois politique, administrative ou managériale, pour révéler ce qu’elles signifient réellement, sans détours.
+    if (direction === "woodenToClear") {
+      prompt = `Tu es un traducteur expert en langage clair. Ton rôle est de décoder les phrases rédigées en langue de bois politique, administrative ou managériale, pour révéler ce qu'elles signifient réellement, sans détours.
 
 Ta reformulation doit :
 - Être directe, concise et compréhensible par tout le monde
@@ -27,31 +26,27 @@ Ta reformulation doit :
 Voici la phrase à traduire :
 
 "${text}"`;
-}
-else if (direction === "clearToWooden") {
-  prompt = `Tu es un expert en communication politique et tu es pressé. Transforme ce texte simple en une formulation technocratique, administrative et floue, en utilisant des tournures vagues, des expressions détournées et des mots abstraits :
-
+    }
+    else if (direction === "clearToWooden") {
+      prompt = `Tu es un expert en communication politique et tu es pressé. Transforme ce texte simple en une formulation technocratique, administrative et floue, en utilisant des tournures vagues, des expressions détournées et des mots abstraits :
 
 "${text}"`;
-}
+    }
 
-
-  // REMPLACE l'URL OpenAI par l'URL de ta fonction Netlify
-const response = await fetch('/.netlify/functions/translate', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-    // SUPPRIME la ligne Authorization ici, elle n'est plus nécessaire dans App.tsx
-  },
-  body: JSON.stringify({
-    model: 'gpt-4o',
-    messages: [
-      { role: 'system', content: prompt },
-      { role: 'user', content: text },
-    ],
-    temperature: 0.7,
-  }),
-});
+    const response = await fetch('/.netlify/functions/translate', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: 'gpt-4o',
+        messages: [
+          { role: 'system', content: prompt },
+          { role: 'user', content: text },
+        ],
+        temperature: 0.7,
+      }),
+    });
 
     const data = await response.json()
     setResult(data.choices[0]?.message?.content ?? 'Erreur')
@@ -71,94 +66,103 @@ const response = await fetch('/.netlify/functions/translate', {
         <img src="/Perroquet.png" alt="Perroquet" className="perroquet" />
       </div>
       <div className="container">
-      <label>Texte à traduire</label>
-      <textarea
-  rows={4}
-  placeholder="Entrez votre texte ici..."
-  value={text}
-  onChange={(e) => {
-    if (e.target.value.length <= maxChars) {
-      setText(e.target.value);
-    }
-  }}
-/>
-<p>{text.length} / {maxChars} caractères</p>
-      <label>Direction de traduction</label>
-      <select value={direction} onChange={(e) => setDirection(e.target.value)}>
-        <option value="woodenToClear">Langue de bois ou compliquée → Langage clair</option>
-        <option value="clearToWooden">Langage clair → Langue de bois</option>
-        
-      </select>
-     
+        <label>Texte à traduire</label>
+        <textarea
+          rows={4}
+          placeholder="Entrez votre texte ici..."
+          value={text}
+          onChange={(e) => {
+            if (e.target.value.length <= maxChars) {
+              setText(e.target.value);
+            }
+          }}
+        />
+        <p>{text.length} / {maxChars} caractères</p>
+        <label>Direction de traduction</label>
+        <select value={direction} onChange={(e) => setDirection(e.target.value)}>
+          <option value="woodenToClear">Langue de bois ou compliquée → Langage clair</option>
+          <option value="clearToWooden">Langage clair → Langue de bois</option>
+        </select>
 
-    <div style={{ display: 'flex', gap: '10px', justifyContent: 'center', marginTop: '10px' }}>
-  <button
-  onClick={handleTranslate}
-  disabled={
-    loading || 
-     text.length === 0 ||
-    text.length > maxChars ||
-    (direction === 'clearToSpecialized' && domaine.trim() === '')
-  }
-  className="translate"
->
-  {loading ? 'Traduction en cours...' : 'Traduire'}
-</button>
+        <div style={{ display: 'flex', gap: '10px', justifyContent: 'center', marginTop: '10px' }}>
+          <button
+            onClick={handleTranslate}
+            disabled={
+              loading ||
+              text.length === 0 ||
+              text.length > maxChars ||
+              (direction === 'clearToSpecialized' && domaine.trim() === '')
+            }
+            className="translate"
+          >
+            {loading ? 'Traduction en cours...' : 'Traduire'}
+          </button>
 
-  <button
-    onClick={() => {
-      setText("");
-      setResult("");
-    }}
-     className="clear"
-  >
-    Effacer
-  </button>
-</div>
+          <button
+            onClick={() => {
+              setText("");
+              setResult("");
+            }}
+            className="clear"
+          >
+            Effacer
+          </button>
+        </div>
 
-
-
-      {result && (
-        <div>
-          <div className="result">{result}</div>
-          <div style={{ display: 'flex', justifyContent: 'center', marginTop: '15px' }}>
-            <button
-              onClick={() => {
-                try {
-                  if (navigator.clipboard && navigator.clipboard.writeText) {
-                    navigator.clipboard.writeText(result).then(() => {
-                      setTimeout(() => alert('Texte copié !'), 100);
-                    }).catch(() => {
+        {result && (
+          <div>
+            <div className="result">{result}</div>
+            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '15px' }}>
+              <button
+                onClick={() => {
+                  try {
+                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                      navigator.clipboard.writeText(result).then(() => {
+                        setTimeout(() => alert('Texte copié !'), 100);
+                      }).catch(() => {
+                        fallbackCopyTextToClipboard(result);
+                      });
+                    } else {
                       fallbackCopyTextToClipboard(result);
-                    });
-                  } else {
+                    }
+                  } catch (err) {
                     fallbackCopyTextToClipboard(result);
                   }
-                } catch (err) {
-                  fallbackCopyTextToClipboard(result);
-                }
-              }}
-              style={{
-                padding: '8px 16px',
-                backgroundColor: '#10b981',
-                color: 'white',
-                border: 'none',
-                borderRadius: '12px',
-                cursor: 'pointer',
-                fontSize: '14px',
-                fontWeight: '500'
-              }}
-            >
-              📋 Copier
-            </button>
+                }}
+                style={{
+                  padding: '8px 16px',
+                  backgroundColor: '#10b981',
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: '12px',
+                  cursor: 'pointer',
+                  fontSize: '14px',
+                  fontWeight: '500'
+                }}
+              >
+                📋 Copier
+              </button>
+            </div>
           </div>
-        </div>
-      )}
-        </div>  {/* fermeture du container */}
-      <Footer />
-  </>
-)
+        )}
+      </div>
 
+      <footer style={{ padding: '16px 0', borderTop: '1px solid #e5e7eb', marginTop: '32px' }}>
+        <div style={{ maxWidth: '800px', margin: '0 auto', padding: '0 16px', textAlign: 'center', fontSize: '14px', color: '#6b7280' }}>
+          <p style={{ marginBottom: '8px' }}>
+            {"Utilise l'API OpenAI pour traduire entre la langue de bois et le langage clair. — "}
+            <a href="/cgu.html" style={{ color: '#2563eb', textDecoration: 'underline' }}>CGU & code source</a>
+          </p>
+          <p>
+            {"Une application "}
+            <a href="https://www.pointsdereflexion.fr" target="_blank" rel="noopener noreferrer" style={{ color: '#c0392b', fontWeight: 600 }}>Points de réflexion</a>
+            {" — "}
+            <a href="https://fr.tipeee.com/points-de-reflexion" target="_blank" rel="noopener noreferrer" style={{ color: '#2563eb', textDecoration: 'underline' }}>Soutenir sur Tipeee</a>
+          </p>
+        </div>
+      </footer>
+    </>
+  )
 
   function fallbackCopyTextToClipboard(text: string) {
     const textArea = document.createElement("textarea");
