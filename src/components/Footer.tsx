@@ -17,7 +17,7 @@ const Footer: React.FC = () => {
           </a>
           {" — "}
           <a href="https://fr.tipeee.com/points-de-reflexion" target="_blank" rel="noopener noreferrer" className="text-blue-600 dark:text-blue-400 underline hover:opacity-80">
-            {"Soutenir sur Tipeee"}
+            {"Soutenir Points de reflexion sur Tipeee"}
           </a>
         </p>
       </div>
