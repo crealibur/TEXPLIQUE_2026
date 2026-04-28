@@ -5,16 +5,16 @@ const Footer: React.FC = () => {
     <footer className="py-4 border-t border-gray-200 dark:border-gray-700 mt-8">
       <div className="container mx-auto px-4 text-center text-sm text-gray-600 dark:text-gray-400 space-y-2">
         <p>
-          Utilise l'API OpenAI pour traduire entre la langue de bois et le langage clair. —{' '}
+          {"Utilise l'API OpenAI pour traduire entre la langue de bois et le langage clair. — "}
           
             href="/cgu.html"
             className="text-blue-600 dark:text-blue-400 underline hover:opacity-80"
           >
-            CGU &amp; code source
+            {"CGU & code source"}
           </a>
         </p>
         <p>
-          Une application{' '}
+          {"Une application "}
           
             href="https://www.pointsdereflexion.fr"
             target="_blank"
@@ -24,14 +24,14 @@ const Footer: React.FC = () => {
           >
             Points de réflexion
           </a>
-          {' '}—{' '}
+          {" — "}
           
             href="https://fr.tipeee.com/points-de-reflexion"
             target="_blank"
             rel="noopener noreferrer"
             className="text-blue-600 dark:text-blue-400 underline hover:opacity-80"
           >
-            Soutenir sur Tipeee ☕
+            {"Soutenir sur Tipeee"}
           </a>
         </p>
       </div>
