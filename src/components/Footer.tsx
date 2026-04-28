@@ -16,7 +16,7 @@ const Footer: React.FC = () => {
         <p>
           Une application{' '}
           
-            href="https://points-de-reflexion.fr"
+            href="https://www.pointsdereflexion.fr"
             target="_blank"
             rel="noopener noreferrer"
             className="font-semibold hover:opacity-80"
